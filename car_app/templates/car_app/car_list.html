@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoWheels - Explore Our Cars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+
+            padding: 10px 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .add-car-btn {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AutoWheels</h1>
+    </header>
+    <main>
+        <h1>Explore Our Cars</h1>
+        <ul>
+            {% for car in cars %}
+            <li>
+                <a href="{% url 'car_detail' car.pk %}">{{ car }}</a>
+            </li>
+            {% empty %}
+            <li>No cars available</li>
+            {% endfor %}
+        </ul>
+        <a class="add-car-btn" href="{% url 'car_create' %}">Add New Car</a>
+    </main>
+    <footer>
+        &copy; 2024 AutoWheels. All rights reserved.
+    </footer>
+</body>
+</html>
